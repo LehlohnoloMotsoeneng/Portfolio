@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BriefcaseBusiness, Globe, Menu, X } from 'lucide-react'
+import { siteConfig } from '../data/siteConfig'
 
 const navItems = [
   { label: 'Home', id: 'home' },
@@ -83,10 +84,27 @@ const Navbar = () => {
           </ul>
 
           <div className="nav-socials" aria-label="Social links">
-            <a href="#" aria-label="GitHub" className="icon-button" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.github}
+              aria-label="GitHub"
+              className="icon-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Globe size={18} />
             </a>
-            <a href="#" aria-label="LinkedIn" className="icon-button" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.linkedin || '#'}
+              aria-label={siteConfig.linkedin ? 'LinkedIn' : 'LinkedIn placeholder'}
+              className="icon-button"
+              onClick={(event) => {
+                if (!siteConfig.linkedin) {
+                  event.preventDefault()
+                }
+              }}
+              target={siteConfig.linkedin ? '_blank' : undefined}
+              rel={siteConfig.linkedin ? 'noopener noreferrer' : undefined}
+            >
               <BriefcaseBusiness size={18} />
             </a>
           </div>

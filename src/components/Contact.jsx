@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useForm } from '@formspree/react'
+import { siteConfig } from '../data/siteConfig'
 
 const initialForm = {
   name: '',
@@ -7,16 +9,27 @@ const initialForm = {
   message: '',
 }
 
+const createGmailComposeUrl = ({ recipient, subject = '', body = '' }) => {
+  const params = new URLSearchParams({
+    view: 'cm',
+    fs: '1',
+    to: recipient,
+    subject,
+    body,
+  })
+
+  return `https://mail.google.com/mail/?${params.toString()}`
+}
+
 const Contact = () => {
   const [formData, setFormData] = useState(initialForm)
   const [errors, setErrors] = useState({})
-  const [submitNotice, setSubmitNotice] = useState('')
+  const [state, handleFormspreeSubmit, resetForm] = useForm('mwlkbpkz')
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormData((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: '' }))
-    setSubmitNotice('')
   }
 
   const validateForm = () => {
@@ -41,13 +54,17 @@ const Contact = () => {
 
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors)
-      setSubmitNotice('')
       return
     }
 
     setErrors({})
-    setSubmitNotice('Contact form submission is not connected yet. Please use the email or social links above.')
+    handleFormspreeSubmit(event)
+  }
+
+  const handleSendAnotherMessage = () => {
+    resetForm()
     setFormData(initialForm)
+    setErrors({})
   }
 
   return (
@@ -70,36 +87,78 @@ const Contact = () => {
           <p className="contact-intro">Let&apos;s connect and build something meaningful.</p>
 
           <div className="contact-links" aria-label="Contact methods">
-            <a href="mailto:Lamotsoeneng03@gmail.com" className="contact-link">
+            <a
+              href={createGmailComposeUrl({ recipient: siteConfig.email })}
+              className="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="contact-label">Email</span>
-              <span className="contact-value">Lamotsoeneng03@gmail.com</span>
+              <span className="contact-value">{siteConfig.email}</span>
             </a>
 
-            <a href="#" className="contact-link disabled" aria-disabled="true" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.github}
+              className="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="contact-label">GitHub</span>
-              <span className="contact-value">[ADD GITHUB URL]</span>
+              <span className="contact-value">{siteConfig.github}</span>
             </a>
 
-            <a href="#" className="contact-link disabled" aria-disabled="true" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.linkedin || '#'}
+              className={`contact-link ${siteConfig.linkedin ? '' : 'disabled'}`}
+              aria-disabled={!siteConfig.linkedin}
+              onClick={(event) => {
+                if (!siteConfig.linkedin) {
+                  event.preventDefault()
+                }
+              }}
+              target={siteConfig.linkedin ? '_blank' : undefined}
+              rel={siteConfig.linkedin ? 'noopener noreferrer' : undefined}
+            >
               <span className="contact-label">LinkedIn</span>
-              <span className="contact-value">[ADD LINKEDIN URL]</span>
+              <span className="contact-value">{siteConfig.linkedin || '[ADD LINKEDIN URL]'}</span>
             </a>
           </div>
 
           <div className="contact-actions">
-            <a href="mailto:Lamotsoeneng03@gmail.com" className="button primary-button">
+            <a
+              href={createGmailComposeUrl({ recipient: siteConfig.email })}
+              className="button primary-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Email Me
             </a>
-            <a href="#" className="button secondary-button disabled-link" aria-disabled="true" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.github}
+              className="button secondary-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               GitHub
             </a>
-            <a href="#" className="button secondary-button disabled-link" aria-disabled="true" onClick={(event) => event.preventDefault()}>
+            <a
+              href={siteConfig.linkedin || '#'}
+              className={`button secondary-button ${siteConfig.linkedin ? '' : 'disabled-link'}`}
+              aria-disabled={!siteConfig.linkedin}
+              onClick={(event) => {
+                if (!siteConfig.linkedin) {
+                  event.preventDefault()
+                }
+              }}
+              target={siteConfig.linkedin ? '_blank' : undefined}
+              rel={siteConfig.linkedin ? 'noopener noreferrer' : undefined}
+            >
               LinkedIn
             </a>
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+        <form className="contact-form" onSubmit={handleSubmit} noValidate aria-busy={state.submitting}>
           <div className="field-row">
             <div className="field-group">
               <label htmlFor="name">Name</label>
@@ -109,6 +168,7 @@ const Contact = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
+                required
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? 'name-error' : undefined}
                 placeholder="Your name"
@@ -124,6 +184,7 @@ const Contact = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
+                required
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? 'email-error' : undefined}
                 placeholder="your@email.com"
@@ -140,6 +201,7 @@ const Contact = () => {
               type="text"
               value={formData.subject}
               onChange={handleChange}
+              required
               aria-invalid={Boolean(errors.subject)}
               aria-describedby={errors.subject ? 'subject-error' : undefined}
               placeholder="Project opportunity"
@@ -155,6 +217,7 @@ const Contact = () => {
               rows="6"
               value={formData.message}
               onChange={handleChange}
+              required
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? 'message-error' : undefined}
               placeholder="Tell me a little about your idea or opportunity..."
@@ -162,11 +225,24 @@ const Contact = () => {
             {errors.message ? <span id="message-error" className="field-error">{errors.message}</span> : null}
           </div>
 
-          <button type="submit" className="button primary-button form-submit">
-            Send Message
+          <button type="submit" className="button primary-button form-submit" disabled={state.submitting}>
+            {state.submitting ? 'Sending...' : 'Send Message'}
           </button>
 
-          {submitNotice ? <p className="form-notice" role="status">{submitNotice}</p> : null}
+          {state.succeeded ? (
+            <div className="form-notice" role="status" aria-live="polite">
+              <p>Message sent successfully. Thank you for reaching out — I&apos;ll get back to you as soon as possible.</p>
+              <button type="button" className="button secondary-button" onClick={handleSendAnotherMessage}>
+                Send another message
+              </button>
+            </div>
+          ) : null}
+
+          {state.errors ? (
+            <p className="form-notice" role="alert" aria-live="assertive">
+              Something went wrong while sending your message. Please try again or contact me directly by email.
+            </p>
+          ) : null}
         </form>
       </div>
     </section>

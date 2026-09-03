@@ -1,40 +1,5 @@
 export const projects = [
   {
-    id: 'ai-chatbot',
-    title: 'AI Chatbot',
-    category: 'Artificial Intelligence',
-    type: 'Individual Project',
-    status: 'Portfolio Project',
-    description:
-      'An AI-powered conversational application designed to interact with users through natural-language conversations and provide relevant responses.',
-    detailedDescription:
-      'A conversational AI concept focused on practical, accessible interaction between a user and an intelligent system.',
-    technologies: ['AI', 'Conversational AI', 'NLP'],
-    features: [
-      'Natural-language user interaction',
-      'Context-aware responses',
-      'Conversation flow support',
-      '[VERIFY FEATURE]',
-    ],
-    problem:
-      'Users need a simple and engaging way to interact with intelligent software through natural language and receive relevant responses.',
-    objective:
-      'Create a conversational interface that demonstrates practical AI-driven interaction and useful user support.',
-    solution:
-      'Design a chatbot experience that processes user prompts and responds in a structured, conversational manner tailored to user needs.',
-    challenges: ['[ADD CHALLENGE]', '[ADD TECHNICAL CONSTRAINTS]'],
-    results: ['[ADD RESULTS]'],
-    lessons: ['[ADD WHAT I LEARNED]'],
-    futureImprovements: ['[ADD FUTURE IMPROVEMENTS]'],
-    github: '#',
-    liveDemo: '#',
-    image: 'ai-chatbot',
-    role: '[ADD MY SPECIFIC CONTRIBUTION]',
-    contribution: '[ADD MY SPECIFIC CONTRIBUTION]',
-    filters: ['AI', 'Software'],
-    featured: false,
-  },
-  {
     id: 'ai-content-generator',
     title: 'AI Content Generator',
     category: 'Generative AI',
@@ -62,8 +27,8 @@ export const projects = [
     results: ['[ADD RESULTS]'],
     lessons: ['[ADD WHAT I LEARNED]'],
     futureImprovements: ['[ADD FUTURE IMPROVEMENTS]'],
-    github: '#',
-    liveDemo: '#',
+    github: 'https://github.com/LehlohnoloMotsoeneng/idea-to-crafted-content',
+    liveDemo: 'https://idea-to-crafted-content.lovable.app',
     image: 'content-generator',
     role: '[ADD MY SPECIFIC CONTRIBUTION]',
     contribution: '[ADD MY SPECIFIC CONTRIBUTION]',
@@ -138,7 +103,7 @@ export const projects = [
     lessons: ['[ADD WHAT I LEARNED]'],
     futureImprovements: ['[ADD FUTURE IMPROVEMENTS]'],
     github: 'https://github.com/AbramOnthatile/Path_Finder',
-    liveDemo: '#',
+    liveDemo: 'https://future-seeker-chat.lovable.app',
     image: 'pathfinder-ai',
     role: '[ADD MY SPECIFIC CONTRIBUTION]',
     contribution: '[ADD MY SPECIFIC CONTRIBUTION]',

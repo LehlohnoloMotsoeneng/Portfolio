@@ -6,7 +6,6 @@ const filterOptions = ['All', 'AI', 'Generative AI', 'NLP', 'Software']
 
 const renderProjectVisual = (project) => {
   const visualConfig = {
-    'ai-chatbot': { label: 'AI Chatbot', icon: Bot },
     'content-generator': { label: 'Content Generator', icon: Sparkles },
     'sentiment-analysis': { label: 'Sentiment Analysis', icon: Database },
     'pathfinder-ai': { label: 'PathFinder AI', icon: Network },

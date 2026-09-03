@@ -1,4 +1,5 @@
 import { BookOpen, BrainCircuit, Code2 } from 'lucide-react'
+import profilePhoto from '../assets/profile.jpg'
 
 const highlightCards = [
   {
@@ -37,6 +38,21 @@ const About = () => {
       </div>
 
       <div className="about-intro-grid">
+        <div className="about-photo-panel" aria-label="Profile image section">
+          <div className="about-photo-frame">
+            <img
+              src={profilePhoto}
+              alt="Portrait of Lehlohonolo Motsoeneng"
+              className="about-photo"
+              onError={(event) => {
+                event.currentTarget.style.display = 'none'
+                event.currentTarget.parentElement.classList.add('about-photo-fallback-visible')
+              }}
+            />
+            <span className="about-photo-fallback" aria-hidden="true">LM</span>
+          </div>
+        </div>
+
         <div className="about-intro">
           <p className="lead">
             I am a software developer passionate about building practical technology

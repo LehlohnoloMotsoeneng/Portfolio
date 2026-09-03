@@ -32,8 +32,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="hero-visual" aria-hidden="true">
-        <div className="code-window">
+      <div className="hero-visual">
+        <div className="code-window" aria-hidden="true">
           <div className="window-header">
             <span className="window-dot red" />
             <span className="window-dot yellow" />
