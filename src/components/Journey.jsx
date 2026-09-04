@@ -5,7 +5,6 @@ import {
   Code2,
   Cpu,
   GraduationCap,
-  MessageSquareText,
   Target,
   Users,
 } from 'lucide-react'

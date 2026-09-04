@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #070b14;
-  --surface: rgba(15, 23, 42, 0.86);
-  --surface-light: rgba(15, 23, 42, 0.7);
-  --border: rgba(148, 163, 184, 0.16);
-  --text: #e5edf9;
-  --text-muted: #9db0ca;
-  --accent: #67e8f9;
+  --bg: #07070a;
+  --surface: #12151c;
+  --surface-light: #0d0f14;
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f5f7ff;
+  --text-muted: #a5adbd;
+  --accent: #38bdf8;
   --accent-secondary: #8b5cf6;
 
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: var(--text);
@@ -36,10 +36,13 @@ body {
   min-height: 100vh;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(103, 232, 249, 0.12), transparent 25%),
-    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.18), transparent 30%),
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(circle at 82% 8%, rgba(56, 189, 248, 0.11), transparent 25%),
+    radial-gradient(circle at 10% 42%, rgba(139, 92, 246, 0.08), transparent 24%),
     var(--bg);
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background-size: 56px 56px, 56px 56px, auto, auto, auto;
+  font-family: 'Manrope', sans-serif;
 }
 
 #root {
@@ -72,6 +75,15 @@ h2,
 h3,
 p {
   margin-top: 0;
+}
+
+h1, h2, h3, h4, .brand, .button, .eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 ::selection {

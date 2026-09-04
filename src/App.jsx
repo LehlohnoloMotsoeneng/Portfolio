@@ -50,9 +50,9 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Journey />
         <Skills />
         <Projects />
-        <Journey />
         <Reflections />
         <Outcomes />
         <Contact />

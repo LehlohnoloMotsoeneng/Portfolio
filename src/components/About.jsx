@@ -1,5 +1,5 @@
 import { BookOpen, BrainCircuit, Code2 } from 'lucide-react'
-import profilePhoto from '../assets/profile.jpg'
+import profilePhoto from '../assets/profile.jpeg'
 
 const highlightCards = [
   {

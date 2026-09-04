@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Bot, Code2, Database, Network, Sparkles, X } from 'lucide-react'
+import { ArrowRight, Code2, Database, Network, Sparkles, X } from 'lucide-react'
 import { projects } from '../data/projects'
 
 const filterOptions = ['All', 'AI', 'Generative AI', 'NLP', 'Software']

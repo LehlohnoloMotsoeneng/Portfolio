@@ -1,77 +1,66 @@
-import { BrainCircuit, Code2, Cpu, Database, Sparkles } from 'lucide-react'
-
-const technologies = ['Java', 'React', 'Spring Boot', 'AI', 'IoT', 'SQL']
+import { ArrowRight } from 'lucide-react'
+import profilePhoto from '../assets/profile.jpeg'
 
 const Hero = () => {
   return (
     <section id="home" className="hero-section">
       <div className="hero-copy">
-        <p className="eyebrow">Software Developer</p>
-        <h1>Building practical software &amp; AI solutions.</h1>
+        <p className="eyebrow">
+          Software Developer <span className="eyebrow-divider">•</span> AI • Web • IoT
+        </p>
+
+        <h1>
+          Building technology
+          <span>with purpose.</span>
+        </h1>
+
         <p className="hero-text">
-          I&apos;m Lehlohonolo Motsoeneng, a software developer passionate about
-          artificial intelligence, IoT and building technology that solves real-world
-          problems.
+          I&apos;m Lehlohonolo Motsoeneng, a software developer focused on building practical
+          digital solutions across web development, AI and emerging technologies.
         </p>
 
         <div className="hero-actions">
           <a href="#projects" className="button primary-button">
-            Explore Projects
+            <span>View my work</span>
+            <ArrowRight size={16} aria-hidden="true" />
           </a>
           <a href="#contact" className="button secondary-button">
             Let&apos;s Connect
           </a>
         </div>
 
-        <div className="tech-stack" aria-label="Technology indicators">
-          {technologies.map((item) => (
-            <span key={item} className="tech-pill">
-              {item}
-            </span>
-          ))}
+        <div className="hero-meta">
+          <a
+            href="https://github.com/LehlohnoloMotsoeneng"
+            className="text-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
 
       <div className="hero-visual">
-        <div className="code-window" aria-hidden="true">
-          <div className="window-header">
-            <span className="window-dot red" />
-            <span className="window-dot yellow" />
-            <span className="window-dot green" />
+        <div className="hero-photo-wrap">
+          <div className="hero-photo-glow" aria-hidden="true" />
+          <div className="hero-photo-frame">
+            <img
+              src={profilePhoto}
+              alt="Lehlohonolo Motsoeneng in a graduation portrait"
+              className="hero-photo"
+            />
           </div>
 
-          <pre>
-            <code>{`const developer = {
-  name: "Lehlohonolo",
-  focus: "Software & AI",
-  mindset: "Keep Learning",
-  build: ["AI", "IoT", "Web"]
-};`}</code>
-          </pre>
-        </div>
+          <div className="hero-status" aria-label="Available to build">
+            <span aria-hidden="true" /> Available to build
+          </div>
 
-        <div className="floating-card card-ai">
-          <BrainCircuit size={18} />
-          <span>AI</span>
-        </div>
-
-        <div className="floating-card card-code">
-          <Code2 size={18} />
-          <span>Code</span>
-        </div>
-
-        <div className="floating-card card-data">
-          <Database size={18} />
-          <span>Data</span>
-        </div>
-
-        <div className="orb orb-cyan" />
-        <div className="orb orb-purple" />
-        <div className="signal signal-top">
-          <Cpu size={16} />
-        </div>
-        <div className="signal signal-bottom">
-          <Sparkles size={16} />
+          <div className="hero-achievement">
+            <span className="achievement-year">2026</span>
+            <span className="achievement-detail">National Diploma<br />ICT: Application Development</span>
+            <small>CPUT</small>
+          </div>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+import { siteConfig } from '../data/siteConfig'
+
 const footerLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
@@ -10,8 +12,8 @@ const footerLinks = [
 ]
 
 const socialLinks = [
-  { label: 'GitHub', href: '#', text: 'GitHub' },
-  { label: 'LinkedIn', href: '#', text: 'LinkedIn' },
+  { label: 'GitHub', href: siteConfig.github, text: 'GitHub' },
+  { label: 'LinkedIn', href: siteConfig.linkedin, text: 'LinkedIn' },
 ]
 
 const Footer = () => {
