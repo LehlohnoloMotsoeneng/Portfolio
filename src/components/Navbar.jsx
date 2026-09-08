@@ -3,48 +3,29 @@ import { BriefcaseBusiness, Globe, Menu, X } from 'lucide-react'
 import { siteConfig } from '../data/siteConfig'
 
 const navItems = [
-  { label: 'Home', id: 'home' },
-  { label: 'About', id: 'about' },
-  { label: 'Skills', id: 'skills' },
-  { label: 'Projects', id: 'projects' },
-  { label: 'Journey', id: 'journey' },
-  { label: 'Reflections', id: 'reflections' },
-  { label: 'Outcomes', id: 'outcomes' },
-  { label: 'Contact', id: 'contact' },
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Skills', path: '/skills' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Journey', path: '/journey' },
+  { label: 'Reflections', path: '/reflections' },
+  { label: 'Outcomes', path: '/outcomes' },
+  { label: 'Documents', path: '/documents' },
+  { label: 'Contact', path: '/contact' },
 ]
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const [currentPath, setCurrentPath] = useState(window.location.pathname.replace(/\/$/, '') || '/')
 
   useEffect(() => {
-    const visibleSections = navItems
-      .map(({ id }) => document.getElementById(id))
-      .filter(Boolean)
-
-    if (!visibleSections.length) {
-      return undefined
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname.replace(/\/$/, '') || '/')
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+    window.addEventListener('popstate', handlePopState)
 
-        if (visibleEntry) {
-          setActiveSection(visibleEntry.target.id)
-        }
-      },
-      {
-        rootMargin: '-30% 0px -45% 0px',
-        threshold: [0.2, 0.35, 0.6],
-      },
-    )
-
-    visibleSections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
+    return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
   const handleLinkClick = () => setIsOpen(false)
@@ -52,7 +33,7 @@ const Navbar = () => {
   return (
     <header className="site-header">
       <nav className="navbar container" aria-label="Main navigation">
-        <a href="#home" className="brand" aria-label="Lehlohonolo home">
+        <a href="/" className="brand" aria-label="Lehlohonolo home">
           <span className="brand-mark">LM</span>
           <span className="brand-text">Lehlohonolo</span>
         </a>
@@ -70,11 +51,11 @@ const Navbar = () => {
 
         <div className={`nav-panel ${isOpen ? 'open' : ''}`} id="mobile-menu">
           <ul className="nav-links">
-            {navItems.map(({ label, id }) => (
-              <li key={id}>
+            {navItems.map(({ label, path }) => (
+              <li key={path}>
                 <a
-                  href={`#${id}`}
-                  className={activeSection === id ? 'active' : ''}
+                  href={path}
+                  className={currentPath === path ? 'active' : ''}
                   onClick={handleLinkClick}
                 >
                   {label}

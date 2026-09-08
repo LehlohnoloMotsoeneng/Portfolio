@@ -1,14 +1,15 @@
 import { siteConfig } from '../data/siteConfig'
 
 const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Reflections', href: '#reflections' },
-  { label: 'Outcomes', href: '#outcomes' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Journey', href: '/journey' },
+  { label: 'Reflections', href: '/reflections' },
+  { label: 'Outcomes', href: '/outcomes' },
+  { label: 'Documents', href: '/documents' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const socialLinks = [

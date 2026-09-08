@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Code2, Database, Network, Sparkles, X } from 'lucide-react'
 import { projects } from '../data/projects'
+import contentGeneratorCover from '../assets/AI Content generater.png'
+import pathfinderCover from '../assets/PathFinder Cover Image.png'
+import portfolioCover from '../assets/Portfolio image.png'
+import sentixCover from '../assets/SentiX Cover Image.png'
 
 const filterOptions = ['All', 'AI', 'Generative AI', 'NLP', 'Software']
 
@@ -9,11 +13,48 @@ const renderProjectVisual = (project) => {
     'content-generator': { label: 'Content Generator', icon: Sparkles },
     'sentiment-analysis': { label: 'Sentiment Analysis', icon: Database },
     'pathfinder-ai': { label: 'PathFinder AI', icon: Network },
+    portfolio: { label: 'Personal Portfolio', icon: Code2 },
   }
 
   const { label, icon: Icon } = visualConfig[project.image] || {
     label: project.title,
     icon: Code2,
+  }
+
+  if (project.image === 'portfolio') {
+    return (
+      <div className="project-visual project-visual--portfolio">
+        <img src={portfolioCover} alt="Personal portfolio website preview" className="project-cover-image" />
+        <div className="project-visual-badge">{label}</div>
+      </div>
+    )
+  }
+
+  if (project.image === 'content-generator') {
+    return (
+      <div className="project-visual project-visual--content-generator-cover">
+        <img src={contentGeneratorCover} alt="AI Content Generator project preview" className="project-cover-image" />
+        <div className="project-visual-badge">{label}</div>
+      </div>
+    )
+  }
+
+  if (project.image === 'sentiment-analysis') {
+    return (
+      <div className="project-visual project-visual--sentix">
+        <img src={sentixCover} alt="SentiX sentiment analysis project preview" className="project-cover-image" />
+        <div className="project-visual-badge">{label}</div>
+      </div>
+    )
+  }
+
+  if (project.image === 'pathfinder-ai') {
+    return (
+      <div className="project-visual project-visual--pathfinder-cover">
+        <img src={pathfinderCover} alt="PathFinder AI project preview" className="project-cover-image" />
+        <div className="project-visual-badge">{label}</div>
+      </div>
+    )
   }
 
   return (
