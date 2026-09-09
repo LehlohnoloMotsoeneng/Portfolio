@@ -3,8 +3,8 @@ import { ArrowRight, Code2, Database, Network, Sparkles, X } from 'lucide-react'
 import { projects } from '../data/projects'
 import contentGeneratorCover from '../assets/AI Content generater.png'
 import pathfinderCover from '../assets/PathFinder Cover Image.png'
-import portfolioCover from '../assets/Portfolio image.png'
-import sentixCover from '../assets/SentiX Cover Image.png'
+import portfolioCover from '../assets/New Portfolio Cover Image.png'
+import sentixCover from '../assets/New SentiX Cover Image.png'
 
 const filterOptions = ['All', 'AI', 'Generative AI', 'NLP', 'Software']
 

@@ -40,7 +40,8 @@ const Footer = () => {
             href={href}
             aria-label={label}
             className="footer-social-link"
-            onClick={(event) => event.preventDefault()}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {text}
           </a>
